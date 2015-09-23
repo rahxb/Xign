@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace Xign
 {
-    public partial class Form1 : Form
+    public partial class frmFileManager : Form
     {
-        public Form1()
+        public frmFileManager()
         {
             InitializeComponent();
         }
+
     }
 }
