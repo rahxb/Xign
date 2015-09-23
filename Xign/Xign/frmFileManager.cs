@@ -77,14 +77,25 @@ namespace Xign
         {
             trFolder.LabelEdit = true;
             trFolder.Nodes.Add("root", "root");
+            trFolder.AfterLabelEdit += TrFolder_AfterLabelEdit;
+        }
+
+        private void TrFolder_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
+        {
+            LAddFolder(e.Label);
         }
 
         void LAddFolder(string strFolderName)
         {
+            // データ追加
+            ModuleItem mi;
             using (FileStream fs = new FileStream(DATA_FILE, FileMode.Create, FileAccess.ReadWrite))
             {
-                AddData(fs, Guid.NewGuid().ToString(), "", strFolderName, new byte[] { });
+                mi = AddData(fs, Guid.NewGuid().ToString(), "", strFolderName, new byte[] { });
             }
+
+            // ヘッダ追加
+            // mi
         }
 
         void LAddFile(string strFilePath, string parent_guid)
